@@ -11,7 +11,6 @@ export default function HomePage() {
         <HeroSection />
         <OpportunitiesSection />
         <CardsShowcase />
-        <AboutSection />
     </div>
   )
 }

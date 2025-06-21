@@ -16,11 +16,19 @@ export default function LoginPage() {
     Array<{ id: number; x: number; y: number; vx: number; vy: number; life: number }>
   >([])
   const [glitchActive, setGlitchActive] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particleIdRef = useRef(0)
 
+  // Ensure component is mounted before using window
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   // Matrix Rain Effect
   useEffect(() => {
+    if (!isMounted) return
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -59,10 +67,12 @@ export default function LoginPage() {
 
     const interval = setInterval(draw, 50)
     return () => clearInterval(interval)
-  }, [])
+  }, [isMounted])
 
   // Mouse tracking
   useEffect(() => {
+    if (!isMounted) return
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY })
 
@@ -82,7 +92,7 @@ export default function LoginPage() {
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+  }, [isMounted])
 
   // Particle animation
   useEffect(() => {
@@ -121,6 +131,15 @@ export default function LoginPage() {
     // Simulate login
     await new Promise((resolve) => setTimeout(resolve, 2000))
     setIsLoading(false)
+  }
+
+  // Don't render until mounted to avoid hydration issues
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    )
   }
 
   return (
@@ -182,7 +201,7 @@ export default function LoginPage() {
       />
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4 py-40">
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -203,9 +222,9 @@ export default function LoginPage() {
             transition={{ duration: 0.2 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2">
-             LOGIN
+              QUANTUM LOGIN
             </h1>
-            <p className="text-gray-400 text-lg">Enter your Details</p>
+            <p className="text-gray-400 text-lg">Access the Neural Network</p>
           </motion.div>
 
           {/* Holographic Form */}
@@ -233,7 +252,7 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit} className="relative p-8 space-y-6">
               {/* Email Field */}
               <motion.div className="relative" whileFocus={{ scale: 1.02 }}>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Neural ID (Email)</label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-cyan-400 w-5 h-5" />
                   <motion.input
@@ -241,7 +260,7 @@ export default function LoginPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full pl-12 pr-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 focus:outline-none transition-all duration-300"
-                    placeholder="Enter your email ..."
+                    placeholder="Enter your neural ID..."
                     whileFocus={{
                       boxShadow: "0 0 20px rgba(34, 211, 238, 0.3)",
                     }}
@@ -252,7 +271,7 @@ export default function LoginPage() {
 
               {/* Password Field */}
               <motion.div className="relative" whileFocus={{ scale: 1.02 }}>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Quantum Key (Password)</label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-5 h-5" />
                   <motion.input
@@ -260,7 +279,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full pl-12 pr-12 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 focus:outline-none transition-all duration-300"
-                    placeholder="Enter your password ..."
+                    placeholder="Enter your quantum key..."
                     whileFocus={{
                       boxShadow: "0 0 20px rgba(168, 85, 247, 0.3)",
                     }}
@@ -308,7 +327,7 @@ export default function LoginPage() {
                       className="flex items-center justify-center space-x-2"
                     >
                       <Shield className="w-5 h-5" />
-                      <span>LOGIN</span>
+                      <span>QUANTUM LOGIN</span>
                       <Sparkles className="w-5 h-5" />
                     </motion.div>
                   )}
@@ -325,7 +344,7 @@ export default function LoginPage() {
               {/* Forgot Password */}
               <motion.div className="text-center" whileHover={{ scale: 1.05 }}>
                 <a href="#" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors duration-300">
-                  Forgot your Password? <span className="text-cyan-400">Reset Neural Access</span>
+                  Forgot your quantum key? <span className="text-cyan-400">Reset Neural Access</span>
                 </a>
               </motion.div>
             </form>
@@ -338,7 +357,7 @@ export default function LoginPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
           >
-           
+            <p className="text-gray-500 text-sm">Powered by Quantum Neural Networks • InLign Tech Solutions</p>
           </motion.div>
         </motion.div>
       </div>

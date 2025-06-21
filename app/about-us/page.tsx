@@ -11,7 +11,10 @@ import AchievementsSection from "./components/achievements-section"
 import TeamLeadershipSection from "./components/team-leadership-section"
 import InternshipJourneySection from "./components/internship-journey-section"
 import TechFloatingParticles from "./components/tech-floating-particles"
-import MatrixRain from "./components/matrix-rain"
+
+import dynamic from "next/dynamic"
+
+const MatrixRain = dynamic(() => import("./components/matrix-rain"), { ssr: false })
 
 export default function AboutUsPage() {
   const containerRef = useRef(null)

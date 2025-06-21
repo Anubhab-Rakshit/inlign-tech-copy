@@ -3,13 +3,15 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import TechHeroSection from "./components/tech-hero-section"
-import NeuralFeedbackMatrix from "./components/neural-feedback-matrix"
+
 import CyberChallengeArena from "./components/challenge-arena"
 import ProjectShowcase from "./components/project-showcase"
 import ParticipationPortal from "./components/participation-portal"
 import PerksGalaxy from "./components/perks-galaxy"
 import TechFloatingParticles from "./components/tech-floating-particles"
-import MatrixRain from "./components/matrix-rain"
+import dynamic from "next/dynamic"
+
+const MatrixRain = dynamic(() => import("./components/matrix-rain"), { ssr: false })
 import DataStreamBackground from "./components/data-stream-background"
 
 export default function WhatsSpecialPage() {

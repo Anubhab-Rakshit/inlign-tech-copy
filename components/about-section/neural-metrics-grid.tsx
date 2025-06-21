@@ -16,10 +16,20 @@ interface NeuralMetricProps {
 function NeuralMetric({ percentage, label, color, delay, mouseX, mouseY, index }: NeuralMetricProps) {
   const [progress, setProgress] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
 
-  // Neural response to cursor
-  const neuralX = useTransform(mouseX, [0, window?.innerWidth || 1920], [-30, 30])
-  const neuralY = useTransform(mouseY, [0, window?.innerHeight || 1080], [-30, 30])
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Use windowSize from state, not directly from window
+  const neuralX = useTransform(mouseX, [0, windowSize.width], [-30, 30])
+  const neuralY = useTransform(mouseY, [0, windowSize.height], [-30, 30])
 
   useEffect(() => {
     if (isVisible) {

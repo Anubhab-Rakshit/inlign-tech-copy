@@ -17,11 +17,21 @@ interface QuantumStatProps {
 function QuantumStat({ value, suffix, label, color, delay, mouseX, mouseY, index }: QuantumStatProps) {
   const [count, setCount] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
 
-  // Quantum field response
-  const quantumX = useTransform(mouseX, [0, window?.innerWidth || 1920], [-50, 50])
-  const quantumY = useTransform(mouseY, [0, window?.innerHeight || 1080], [-50, 50])
+  useEffect(() => {
+    // Set window size on mount
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
+  // Use windowSize from state, not directly from window
+  const quantumX = useTransform(mouseX, [0, windowSize.width], [-50, 50])
+  const quantumY = useTransform(mouseY, [0, windowSize.height], [-50, 50])
   useEffect(() => {
     if (isVisible) {
       const duration = 3000

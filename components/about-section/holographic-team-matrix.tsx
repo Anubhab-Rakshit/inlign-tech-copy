@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState ,useEffect } from "react"
 import { motion, AnimatePresence, useTransform, type MotionValue } from "framer-motion"
 
 interface TeamMember {
@@ -83,9 +83,21 @@ function HolographicProfile({
   mouseY: MotionValue<number>
   index: number
 }) {
-  // Holographic response to cursor
-  const holoX = useTransform(mouseX, [0, window?.innerWidth || 1920], [-20, 20])
-  const holoY = useTransform(mouseY, [0, window?.innerHeight || 1080], [-20, 20])
+  // Add window size state
+  const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Use windowSize from state, not directly from window
+  const holoX = useTransform(mouseX, [0, windowSize.width], [-20, 20])
+  const holoY = useTransform(mouseY, [0, windowSize.height], [-20, 20])
 
   return (
     <motion.div

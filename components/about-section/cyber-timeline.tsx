@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { motion, useTransform, type MotionValue } from "framer-motion"
 
 interface TimelineEvent {
@@ -64,9 +64,21 @@ function CyberNode({
   mouseY: MotionValue<number>
   index: number
 }) {
-  // Cyber response to cursor
-  const cyberX = useTransform(mouseX, [0, window?.innerWidth || 1920], [-15, 15])
-  const cyberY = useTransform(mouseY, [0, window?.innerHeight || 1080], [-15, 15])
+  // Add window size state
+  const [windowSize, setWindowSize] = useState({ width: 1920, height: 1080 })
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Use windowSize from state, not directly from window
+  const cyberX = useTransform(mouseX, [0, windowSize.width], [-15, 15])
+  const cyberY = useTransform(mouseY, [0, windowSize.height], [-15, 15])
 
   return (
     <motion.div

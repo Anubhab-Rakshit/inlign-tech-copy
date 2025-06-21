@@ -19,39 +19,39 @@ const navItems: NavItem[] = [
   { id: "verify", label: "Verify Certificate", icon: Award, href: "/verify", color: "#ef4444" },
   { id: "special", label: "What's Special", icon: Zap, href: "/whats-special", color: "#10b981" },
   { id: "contact", label: "Contact Us", icon: Mail, href: "/contact", color: "#ec4899" },
+  { id: "Login", label: "Login", icon: User, href: "/login", color: "#8b5cf6" }
 ]
 
-const hoverInfo: Record<string, { title: string; description: string; features: string[] }> = {
+const hoverInfo: Record<string, { title: string;  }> = {
   home: {
     title: "Digital Gateway",
-    description: "Your portal to next-generation tech education",
-    features: ["Interactive Learning", "3D Experiences", "Real-time Progress"],
+
   },
   about: {
     title: "Our DNA",
-    description: "Discover the molecular structure of innovation",
-    features: ["2,500+ Graduates", "94% Job Placement", "Global Network"],
+  
+  
   },
   programs: {
     title: "Learning Universe",
-    description: "Explore our solar system of cutting-edge programs",
-    features: ["4 Core Programs", "Hands-on Projects", "Industry Partnerships"],
+   
   },
   verify: {
     title: "Blockchain Verification",
-    description: "Secure certificate validation system",
-    features: ["Instant Verification", "Tamper-proof", "Global Recognition"],
+   
   },
   special: {
     title: "Quantum Advantage",
-    description: "What makes us different from the rest",
-    features: ["AI-Powered Learning", "VR/AR Integration", "Personalized Paths"],
+  
   },
   contact: {
     title: "Communication Portal",
-    description: "Connect with our digital reality experts",
-    features: ["24/7 Support", "Global Offices", "Instant Response"],
+   
   },
+  login: {
+    title: "Access Control",
+
+  }
 }
 
 // Particle Trail Component
@@ -160,25 +160,11 @@ function HoverOverlay({ item, isVisible }: { item: NavItem; isVisible: boolean }
               >
                 <item.icon className="w-3 h-3" style={{ color: item.color }} />
               </div>
-              <h3 className="text-white font-bold text-sm">{info.title}</h3>
+             
             </div>
 
-            <p className="text-white/80 text-xs mb-3 leading-relaxed">{info.description}</p>
 
-            <div className="space-y-1">
-              {info.features.map((feature, index) => (
-                <motion.div
-                  key={feature}
-                  className="flex items-center space-x-2 text-xs"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.2 }}
-                >
-                  <div className="w-1 h-1 rounded-full" style={{ backgroundColor: item.color }} />
-                  <span className="text-white/70">{feature}</span>
-                </motion.div>
-              ))}
-            </div>
+          
           </div>
 
           {/* Arrow pointer */}
@@ -524,7 +510,7 @@ function MobileQuantumMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                   </div>
                   <div className="flex-1">
                     <span className="text-white font-medium text-sm">{item.label}</span>
-                    <p className="text-white/60 text-xs mt-1">{hoverInfo[item.id].description}</p>
+                   
                   </div>
 
                   {/* Hover Effect */}

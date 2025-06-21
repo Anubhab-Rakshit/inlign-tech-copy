@@ -58,17 +58,17 @@ export default function UniversalBookLoader({ onComplete }: UniversalBookLoaderP
   }, [onComplete])
 
   useEffect(() => {
-    // Optimized particles - reduced count for performance
-    const newParticles = Array.from({ length: 25 }, (_, i) => ({
+    // Reduced particles for better performance
+    const newParticles = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      delay: Math.random() * 1.5,
-      size: Math.random() * 3 + 1,
+      delay: Math.random() * 1,
+      size: Math.random() * 2 + 1,
     }))
     setParticles(newParticles)
 
-    // Faster page transitions - 400ms per page for 2s total
+    // Faster transitions - 600ms per page for 3s total
     const interval = setInterval(() => {
       setCurrentPage((prev) => {
         if (prev < pages.length - 1) {
@@ -78,7 +78,7 @@ export default function UniversalBookLoader({ onComplete }: UniversalBookLoaderP
           return prev
         }
       })
-    }, 800) // Changed to 800ms for better visibility
+    }, 600) // Faster page transitions
 
     return () => clearInterval(interval)
   }, [handleComplete, pages.length])
@@ -315,7 +315,32 @@ export default function UniversalBookLoader({ onComplete }: UniversalBookLoaderP
         </div>
 
         {/* Company Logo - Faster Animation */}
-        
+        <motion.div
+          className="absolute top-8 left-1/2 transform -translate-x-1/2"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.h1
+            className="text-4xl font-bold text-white tracking-wider text-center"
+            animate={{
+              textShadow: [
+                "0 0 15px rgba(59, 130, 246, 0.6)",
+                "0 0 20px rgba(147, 51, 234, 0.6)",
+                "0 0 15px rgba(236, 72, 153, 0.6)",
+              ],
+            }}
+            transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
+          >
+            InLign Tech Solutions
+          </motion.h1>
+          <motion.p
+            className="text-white/70 text-center mt-1 text-base"
+            style={{ textShadow: "0 0 8px rgba(255,255,255,0.2)" }}
+          >
+            Experience • Learn • Thrive
+          </motion.p>
+        </motion.div>
       </div>
     </div>
   )

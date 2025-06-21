@@ -111,10 +111,10 @@ export default function UndergroundTechFooter() {
   }
 
   const socialPortals = [
-    { name: "linkedin", icon: LinkedinIcon, color: "#0077b5", url: "#" },
+    { name: "linkedin", icon: LinkedinIcon, color: "#0077b5", url: "https://www.linkedin.com/company/inlighn-tech/" },
     { name: "github", icon: GithubIcon, color: "#333", url: "#" },
     { name: "twitter", icon: TwitterIcon, color: "#1da1f2", url: "#" },
-    { name: "instagram", icon: InstagramIcon, color: "#e4405f", url: "#" },
+    { name: "instagram", icon: InstagramIcon, color: "#e4405f", url: "https://www.instagram.com/inlighn_tech/?hl=en" },
   ]
 
   return (
@@ -217,7 +217,7 @@ export default function UndergroundTechFooter() {
             <div className="relative">
               <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl" />
               <div className="relative bg-black/40 backdrop-blur-xl border border-purple-500/30 rounded-2xl p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold text-purple-400 mb-4">FACILITY LOCATION</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-purple-400 mb-4">LOCATION</h3>
                 <div className="relative h-32 sm:h-48 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg overflow-hidden">
                   {/* 3D Building Simulation */}
                   <div className="absolute inset-0 flex items-end justify-center">
@@ -254,15 +254,18 @@ export default function UndergroundTechFooter() {
                 <div className="mt-4 space-y-2 text-xs sm:text-sm text-gray-300">
                   <div className="flex items-center gap-2">
                     <MapPinIcon size={14} className="text-purple-400 flex-shrink-0" />
-                    <span className="break-words">221B Quantum Lane, Silicon City</span>
+                    <span className="break-words">Corporate Office- Office No: VO-301, WeWork Prestige Central, Ground Floor, 36, Infantry Rd, Tasker Town, Shivaji Nagar, Bengaluru, Karnataka 560001
+
+</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <PhoneIcon size={14} className="text-purple-400 flex-shrink-0" />
-                    <span>+1 555 CYBER-TECH</span>
+                    <span>+91 9368842663</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MailIcon size={14} className="text-purple-400 flex-shrink-0" />
-                    <span className="break-all">facility@neotech.underground</span>
+                    <span className="break-all">
+info@inlighntech.com</span>
                   </div>
                 </div>
               </div>
@@ -293,7 +296,7 @@ export default function UndergroundTechFooter() {
 
         {/* Social Media Dimensional Portals */}
         <div className="mt-12 sm:mt-16">
-          <h3 className="text-xl sm:text-2xl font-bold text-center text-white mb-6 sm:mb-8">DIMENSIONAL PORTALS</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-center text-white mb-6 sm:mb-8">REACH US</h3>
           <div className="flex justify-center gap-4 sm:gap-6 lg:gap-8 flex-wrap">
             {socialPortals.map((portal) => {
               const IconComponent = portal.icon
@@ -338,14 +341,14 @@ export default function UndergroundTechFooter() {
             <div className="absolute -inset-4 sm:-inset-8 bg-gradient-to-r from-cyan-400/10 via-purple-500/10 to-pink-500/10 rounded-3xl blur-2xl animate-pulse" />
             <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 mx-4">
               <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
-                NEOTECH ACADEMY
+                INLIGHN TECH
               </h2>
               <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                Underground facility dedicated to training the next generation of cyber warriors and digital architects.
-                Our classified programs prepare agents for the technological battlefield of tomorrow.
+               At INLIGHN TECH, we believe that the future of education lies in bridging the gap between academic learning and industry needs.
+
               </p>
               <div className="mt-6 text-xs sm:text-sm text-gray-400">
-                © 2024 NeoTech Underground Facility. All transmissions encrypted.
+                © 2025 INLIGHN TECH . All transmissions encrypted.
               </div>
             </div>
           </div>

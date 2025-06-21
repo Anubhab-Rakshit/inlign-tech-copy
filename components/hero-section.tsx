@@ -80,9 +80,7 @@ export default function HeroSection() {
           </div>
 
           {/* CTA Button */}
-          <div className="pointer-events-auto animate-fade-in-up" style={{ animationDelay: "1.5s" }}>
-            <MorphingButton />
-          </div>
+          
         </div>
       </div>
 

@@ -6,7 +6,7 @@ import UndergroundTechFooter from '@/components/underground-tech-footer'
 import ClientLayout from "./clientLayout"
 
 export const metadata: Metadata = {
-  title: "InLign Tech Solutions - Experience. Learn. Thrive.",
+  title: "InLighn Tech Solutions - Experience. Learn. Thrive.",
   description: "Transform your career with cutting-edge technology education",
   keywords: [
     "technology education",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "InLign Tech Solutions"
   ],
   icons: {
-    icon: '/inlign-tech-icon.png',
+    icon: '/inlighn-tech-logo.png',
   },
 }
 

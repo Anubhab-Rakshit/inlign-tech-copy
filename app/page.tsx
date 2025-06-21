@@ -6,6 +6,7 @@ import AboutSection from "@/components/about-page"
 import OpportunitiesSection from "@/components/opportunities-section"
 import BenefitsSection from "./about-us/components/benefits-section"
 import InternshipJourneySection from "./about-us/components/internship-journey-section"
+import TeamLeadershipSection from "./about-us/components/team-leadership-section"
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
         <CardsShowcase />
         <BenefitsSection />
        <InternshipJourneySection />
+        <TeamLeadershipSection />
     </div>  
   )
 }

@@ -11,6 +11,7 @@ import AchievementsSection from "./components/achievements-section"
 import TeamLeadershipSection from "./components/team-leadership-section"
 import InternshipJourneySection from "./components/internship-journey-section"
 import TechFloatingParticles from "./components/tech-floating-particles"
+import AboutSection from "@/components/about-page"
 
 import dynamic from "next/dynamic"
 
@@ -71,10 +72,9 @@ export default function AboutUsPage() {
         <AboutHeroSection />
         <VisionMissionSection />
         <CompanyStorySection />
-        <BenefitsSection />
-        <InternshipJourneySection />
+        <AboutSection />
         <AchievementsSection />
-        <TeamLeadershipSection />
+        
       </div>
     </div>
   )

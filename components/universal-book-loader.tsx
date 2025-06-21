@@ -315,32 +315,7 @@ export default function UniversalBookLoader({ onComplete }: UniversalBookLoaderP
         </div>
 
         {/* Company Logo - Faster Animation */}
-        <motion.div
-          className="absolute top-8 left-1/2 transform -translate-x-1/2"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <motion.h1
-            className="text-4xl font-bold text-white tracking-wider text-center"
-            animate={{
-              textShadow: [
-                "0 0 15px rgba(59, 130, 246, 0.6)",
-                "0 0 20px rgba(147, 51, 234, 0.6)",
-                "0 0 15px rgba(236, 72, 153, 0.6)",
-              ],
-            }}
-            transition={{ duration: 2.5, repeat: Number.POSITIVE_INFINITY }}
-          >
-            InLign Tech Solutions
-          </motion.h1>
-          <motion.p
-            className="text-white/70 text-center mt-1 text-base"
-            style={{ textShadow: "0 0 8px rgba(255,255,255,0.2)" }}
-          >
-            Experience • Learn • Thrive
-          </motion.p>
-        </motion.div>
+      
       </div>
     </div>
   )
